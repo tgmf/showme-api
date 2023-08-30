@@ -1,0 +1,37 @@
+# Node and npm related
+node_modules/
+package-lock.json
+npm-debug.log
+yarn.lock
+.yarn-integrity
+
+# Environment variables and secrets
+.env
+.env.*.local
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.log
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build directories
+/dist
+/build
+
+# Other files/folders you might want to ignore
+# (uncomment or add as needed)
+# /public/assets
+# /logs
+.app.yaml
+.gcloudeignore
