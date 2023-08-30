@@ -1,5 +1,5 @@
 {
-  "name": "showmedev",
+  "name": "showmedev-api",
   "version": "1.0.1",
   "description": "",
   "main": "./src/app.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "tgmf <2.tagmf@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "node-fetch": "^3.3.2"
