@@ -8,10 +8,11 @@ import boardConfig from '../../boardsConfig.js'; // Import the configuration for
 const router = express.Router();
 
 // Middleware to process incoming requests with path parameters 'project', 'type', and 'category'.
-router.use('/:project/:type/:category', createCentralRouter);
+router.use('/:project/:type/:category/:itemId?', createCentralRouter);
 
 // Middleware function to generate and attach a configuration for the incoming request.
 function createCentralRouter (req, res, next) {
+    console.log("showmehub use req.body:", req.body);
     // Extract path parameters from the request.
     const { project, type, category } = req.params;
     // Lookup the configuration for the given project, type, and category.
@@ -28,11 +29,20 @@ function createCentralRouter (req, res, next) {
 }
     
 // Route to handle GET requests to fetch items based on the project, type, and category.
-router.get('/:project/:type/:category/', (req, res) => {
-    // Extract the attached configuration from the request.
+router.get('/:project/:type/:category/:itemId?', (req, res) => {
     const { queryConfig } = req;
-    // Construct the GraphQL query using the board ID from the configuration.
-    const query = `query { boards (ids:[${queryConfig.boardId}]) {items {name }}}`;
+    const itemIdFilter = req.params.itemId ? `(ids:[${req.params.itemId}])` : ''; // Optional item ID filter
+    const query = `query {
+        boards (ids:[${queryConfig.boardId}]) {
+            items ${itemIdFilter} {
+                name
+                column_values {
+                    id
+                    text
+                }
+            }
+        }
+    }`;
     
     // Send the query request to monday.com's API.
     fetch("https://api.monday.com/v2", {
@@ -53,6 +63,7 @@ router.get('/:project/:type/:category/', (req, res) => {
 
 // Route to handle POST requests to create items based on the project, type, and category.
 router.post('/:project/:type/:category', async (req, res) => {
+    console.log("showmehub post req.body:", req.body);
     // Extract the attached configuration from the request.
     const { queryConfig } = req;
     try {

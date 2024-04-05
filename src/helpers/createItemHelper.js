@@ -8,6 +8,7 @@
  * @throws Will throw an error if the API request encounters any errors.
  */
 async function createItem(itemData, board, group) {
+    console.log("showmehub itemData: ", itemData);
     // Constructing the GraphQL mutation for creating an item.
     const mutation = `
         mutation {
@@ -21,6 +22,7 @@ async function createItem(itemData, board, group) {
             }
         }`;
     
+        console.log('mutation: ', mutation);
     // Making the API call to Monday.com to create the item.
     const response = await fetch("https://api.monday.com/v2", {
         method: 'post',

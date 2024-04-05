@@ -77,4 +77,12 @@ export default {
             }
         },
     },
+    "test": {
+        "callgear": {
+            "lead": {
+                BOARD_ID: "TEST_CALLGEAR_BOARD_ID",
+                GROUP_NAME: "TEST_CALLGEAR_GROUP_NAME"
+            }
+        }
+    }
 }

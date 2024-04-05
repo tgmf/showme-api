@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // Starting the server on the specified port or default to 3000.
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
